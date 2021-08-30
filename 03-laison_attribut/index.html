@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs</title>
+    <script src="../vue.global.js"></script>
+</head>
+<body>
+    <h1>Liaison d'attribut (HTML)</h1>
+        <div id="app">
+            <!-- 
+                On ne peut pas faire ca: 
+                <a href="{{lienUrl}}">Lien vers Dawan</a> 
+            -->
+            
+            
+            <a v-bind:href="lienUrl">Lien vers Dawan</a> |
+
+            <!-- :attr = syntaxe raccourcie de v-bind:attr -->
+            <a :href="lienUrl">Lien vers Dawan</a>
+            <button v-bind:disabled="isDisabled">
+                Valider
+            </button>
+
+            <!-- 
+                avec v-bind, ce qu'on met dans les guillemets
+                c'est c'est une variable ou fonction.
+                Attention si on veut concatener une chaine
+                avec une variable il faut utiliser les 
+                '' ou ``.
+            -->
+            <p v-bind:title="'Lien vers ' + lienUrl">
+                Laboris dolore ut deserunt laborum ad.
+            </p>
+        </div>
+
+        <script>
+            let app = Vue.createApp({
+                data: function() {
+                    return {
+                        lienUrl: "https://dawan.fr",
+                        isDisabled: true
+                    };
+                }
+            });
+            app.mount("#app");
+        </script>
+</body>
+</html>

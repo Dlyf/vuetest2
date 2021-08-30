@@ -1,0 +1,15 @@
+.active {
+    color: cornflowerblue;
+}
+
+.text {
+    color: red;
+}
+
+.static {
+    font-family: fantasy;
+}
+
+.txt-error {
+    font-weight: bold;
+}

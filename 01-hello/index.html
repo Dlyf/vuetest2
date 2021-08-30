@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <h1>Vuejs</h1>
+    <div id="app">
+        <!-- 
+            L'application vue.js se trouvera uniquement dans la div
+        -->
+        <p>Hello World !</p>
+    </div>
+    <script>
+        // Creation de l'application Vuejs.
+        let vm = Vue.createApp({
+
+        });
+        // On monte l'application sur la div avec l'id app
+        vm.mount("#app");
+    </script>
+</body>
+</html>

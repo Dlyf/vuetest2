@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vuejs</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="../vue.global.js"></script>
+    </head>
+
+    <body>
+        <h1>Le style & classe CSS</h1>
+        <div id="app">
+            <h2 v-bind:class="{ active: isActive }">Bleu</h2>
+            <p :class="mesClasses">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, doloribus esse quisquam porro eum possimus, nemo mollitia doloremque facilis itaque autem vel repellendus id ut sit. Iste eligendi doloribus aspernatur.
+            <p class="static" :class="mesClasses">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, doloribus esse quisquam porro eum possimus, nemo mollitia doloremque facilis itaque autem vel repellendus id ut sit. Iste eligendi doloribus aspernatur.
+            Alias eius porro nemo dolore blanditiis eum enim ex consequatur dolorem exercitationem molestiae iure ullam, maiores quis, natus hic officiis aliquid praesentium voluptate perspiciatis expedita! Dolorum dolore aspernatur ex nisi.</p>m
+            <h3 :style="{color: 'red', backgroundColor: 'wheat', 'font-size': '16px'}">lorem ipsu</h3>
+            <p :style="styles"></p>
+        </div>
+
+        <script>
+            let app = Vue.createApp({
+                data: function() {
+                    return {
+                        isActive: true,
+                        mesClasses: {
+                            text: true,
+                            // On ne peut pas utiliser le spinal-case/kebab-case (txt-error)
+                            // pour un objet on doit l'entourer de guillements
+                            'txt-error': true
+                        }
+                    };
+                },
+                methods: {
+                    
+                }
+            });
+            let vm = app.mount("#app");
+        </script>
+    </body>
+</html>

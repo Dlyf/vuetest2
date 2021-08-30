@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="!disabled">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita sequi repellat quam aliquam accusamus cumque fuga pariatur fugit blanditiis, impedit veniam, excepturi reiciendis accusantium unde dolores odit! Esse, excepturi amet?
+        </p>
+        <p v-if="result === 'even'">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus obcaecati sit ipsa eum, similique ipsam odio accusamus, dolores magnam modi dicta aliquam minus expedita nam. Ducimus, perferendis? Error, totam. Sit!
+        </p>
+        <a v-else-if="result == 'odd'" href="#">hola</a>
+        <h2 v-else>Je n'ai pas compris</h2>
+
+         <!-- La balise template est prevu pour le rendu conditionnel -->
+         <template v-if="!disabled">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est commodi unde repellendus aperiam saepe eaque distinctio officia error cupiditate, molestias eligendi assumenda porro, placeat inventore obcaecati? Perspiciatis, recusandae saepe. Vel.</p>
+            <main>
+                sdas
+            </main>
+        </template>
+        <p v-show="disabled">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam nisi repellendus, adipisci voluptatem, velit minus quo facere ipsa, ullam voluptatum quisquam corporis tenetur provident aliquid officia nobis quam corrupti consequuntur.</p>
+
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: function() {
+                return {
+                    disabled: false,
+                    result: 'odd'
+                };
+            }
+        });
+        let vm = app.mount("#app");
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vuejs</title>
+        <!-- <link rel="stylesheet" href="./css/style.css"> -->
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+
+    <body>
+        <h1>Exercice</h1>
+        <div id="app">
+            <p v-if="!imageUrl">Aucune image trouvée</p>
+            <img v-else v-bind:src="imageUrl" alt="Animal" width="64"/>
+            <br />
+            <button v-on:click="changerImage(1)">chien</button>
+            <button @click="changerImage(2)">chat</button>
+            <button @click="changerImage(3)">Lapin</button>
+        </div>
+
+        <script>
+            let app = Vue.createApp({
+                data: function() {
+                    return {
+                        imageUrl: ''
+                    };
+                },
+                methods: {
+                    changerImage(nombre) {
+                        // if (nombre == 0) {
+                        //     imageUrl: ressources/dog_640.jpg;
+                        // }
+                        switch(nombre) {
+                            case 1 :
+                                this.imageUrl = './ressources/dog_640.jpg';
+                                break;
+                            case 2 :
+                                this.imageUrl = './ressources/cat_640.jpg';
+                                break;
+                            case 3 :
+                                this.imageUrl = './ressources/rabbit_640.jpg';
+                                break
+                            default:
+                                this.imageUrl = '';
+                        }
+                    }
+                }
+            });
+            let vm = app.mount("#app");
+        </script>
+    </body>
+</html>

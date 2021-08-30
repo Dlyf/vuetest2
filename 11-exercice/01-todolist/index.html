@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="../../vue.global.js"></script>
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <form v-on:submit="addTask"> 
+            <label for="task">tache</label>
+            <input type="text" name="task" id="task" />
+            <label for="task">Taille</label>
+            <input type="text" name="size" id="size" />
+
+            <label for="task">Etiquette</label>
+            <select name="lvl" id="lvl">
+                <option v-for="option of options" :value="option.valeur">
+                    {{ option.label }}
+                </option>
+            </select>
+            <input type="text">
+            <input type="submit" value="Valider" />
+        </form>
+        <h2>Liste des tâches</h2>
+        <p v-if="todos.length < 1">Aucune tâche </p>
+        <ul v-else>
+            <li v-for="todo in todos" v-bind:class="todo.lvl" :style="{fontSize: todo.taille}">{{ todo.texte }}</li>
+        </ul>
+    </div>
+</body>
+</html>
+<!-- 
+
+To Do List Enoncé
+Objectif travaillé: les directives, l’interpolation, le property binding, les événements
+
+Niveau 1
+On veut lorsque l’utilisateur valide son formulaire, un événement est déclenché, 
+dans lequel on récupère ce que l’utilisateur a saisit 
+    1. Faire un formulaire avec dedans:
+            -un label "tache"
+            -un input de type text avec id, name 
+            -un input de type submit
+    2. Faire une liste non ordonnée, vide avec une balise li vide dedans.
+    3. Ajouter un événement de type submit sur la balise form
+    4. Créer un tableau vide (todos par exemple)
+    4. Créer une methode (addTask par exemple) qui prendra en paramètre l'event
+            a- Supprimer le comportement par defaut du formulaire
+            b- Récuperer la valeur texte du champ input via le paramètre
+            c- Ajouter la valeur du champ input dans le tableau (todos par exemple)
+    5. On affiche le tableau à l’aide d’une directive for sur la balise li.
+
+Niveau 2
+On veut lorsque l’utilisateur valide son formulaire, un événement est déclenché, dans lequel on récupère ce que l’utilisateur a saisie 
+    1. L’utilisateur doit pouvoir saisir du texte depuis le champ input d’un formulaire, une taille 
+            et une etiquette (Urgent, Important, Pas important par exemple).
+    2. L'etiquette peut se faire avec la balise <select></select> et contiendra
+        une directive for pour afficher les 3 options. 
+    3. On associera une classe bootstrap comme valeur a la balise select pour le style (couleur rouge/ orange/ verte) 
+    4. Lorsqu’il valide le formulaire,  on récupère ce qui a été saisie dans le formulaire à
+         l’aide d’un événement puis on le stock
+         dans un tableau de chaîne de caractères.
+         et on supprime le comportement par defaut de l'evenement 
+    5. On affiche le tableau dans une liste à l’aide d’une directive for.
+-->

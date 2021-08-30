@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vuejs</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="../vue.global.js"></script>
+    </head>
+
+    <body>
+        <h1>Les propriétés calculées</h1>
+        <div id="app">
+            <p>Message: {{ message }}</p>
+            <p>Inverse: {{ inverserMessage() }}</p>
+            <p>Calculée: {{  inverserMessageComputed }}</p>
+            <!-- 
+                le v-model permet de faire une liaison automatiquement sur l'attribut value et la variable message
+                Et permet de mettre à jour la variable à chaque saisie
+                v-on:input v-bind:value
+            -->
+            <input type="text" v-model="message">
+            <input type="text" v-model="rienAVoir">
+            <input type="text" v-model="nomComplet">
+        </div>
+
+        <script>
+            let app = Vue.createApp({
+                data: function() {
+                    return {
+                        message: 'Salut',
+                        rienAVoir: ''
+                    };
+                },
+                methods: {
+                    inverserMessage() {
+                        console.count('inverserMessage');
+                        const tableau_lettre = this.message.split('');
+                        // console.log(tableau_lettre);
+                        const inverser_tableau = tableau_lettre.reverse();
+                        // console.log(inverser_tableau);
+                        const nouveau_message = tableau_lettre.join('');
+                        console.log(nouveau_message);
+                        return nouveau_message;
+                    }
+                },
+                computed: {
+                    inverserMessageComputed() {
+                        console.log('inverserMessageComputed');
+                        return this.message.split('').reverse().join('');
+                    }
+                },
+                watch: {
+                    nomComplet(nouvelleValeur, ancienneValeur) {
+                        console.log("nouvelleValeur: " + nouvelleValeur);
+                        console.log("ancienneValeur: " + ancienneValeur);
+
+                    }
+                }
+            });
+            let vm = app.mount("#app");
+        </script>
+    </body>
+</html>

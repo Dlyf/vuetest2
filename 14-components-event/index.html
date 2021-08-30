@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vuejs</title>
+        <!-- <link rel="stylesheet" href="./css/style.css"> -->
+        <script src="../vue.global.js"></script>
+    </head>
+
+    <body>
+        <h1>Les Composants</h1>
+        <div id="app">
+            <h2>Compteur Parent: {{ compteur }}</h2>
+            <app-compteur 
+                :parentcompteur="compteur" 
+                v-on:my-incrementer="updateCompteur($event)">
+            </app-compteur>
+        </div>
+
+        <script type="module">
+            import CompteurComponent from './compteur.js';
+            let app = Vue.createApp({
+                data: function() {
+                    return {
+                        compteur: 10
+                    };
+                },
+                methods: {
+                   updateCompteur(event) {
+                       console.log("Event: " + event);
+                   }
+                },
+                computed: {
+                   
+                },
+                watch: {
+                   
+                },
+                components: {
+                    'app-compteur': CompteurComponent
+                }
+            });
+            // Enregistrer un composant Global
+            app.component('v-header', {
+                template: '<h1>super Header: {{ titre }}</h1>',
+                data: function() {
+                    return {
+                        titre: 'Hello'
+                    }
+                }
+            });
+            let vm = app.mount("#app");
+        </script>
+    </body>
+</html>

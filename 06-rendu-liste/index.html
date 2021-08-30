@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{prenoms}}</p>
+
+        <ul>
+            <!-- On a créé une variable qui s'appelle prenom
+            elle sera disponible dans la balise <li> et les sous balises -->
+            <li v-for="prenom of prenoms">
+                {{ prenom }}
+            </li>
+
+            <ol>
+                <li v-for="(prenom, index) of prenoms">
+                    prenoms[{{ index }}] = {{prenom}}
+                </li>
+            </ol>
+            <ol>
+                <li v-for="(prenom, index) of prenoms">
+                    {{ prenom }} : {{index}}
+                </li>
+            </ol>
+            <ul>
+                <li v-for="u of utilisateurs">
+                    {{ u.nom.toUpperCase() }} {{ u.prenom }}
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: function() {
+                return {
+                    prenoms: ["Rick", "Jerry", "Beth", "Summer", "Morty"],
+                    utilisateurs: [
+                        {nom: "Doe", prenom: "John"},
+                        {nom: "Zarella", prenom: "Maude"}
+
+                    ]
+                };
+            }
+        });
+        let vm = app.mount("#app");
+    </script>
+</body>
+</html>

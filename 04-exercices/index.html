@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{titre}}</h1>
+        <p>{{message}}</p>
+        <img v-bind:src="lienImg" :alt="altext">
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: function() {
+                const variables = {
+                    titre: 'lorem ipsum',
+                    message: "Lorem ipsum Dolor",
+                    lienImg : "https://upload.wikimedia.org/wikipedia/commons/7/78/Akita_inu.jpeg"
+                }
+                return variables;
+            }
+        });
+        app.mount("#app");
+    </script>
+</body>
+</html>

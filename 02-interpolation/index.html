@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs</title>
+    <script src="../vue.global.js"></script>
+</head>
+<body>
+    <h1>Interpolation</h1>
+    <div id="app">
+        <p>{{ titre }}</p>
+        <a href="#">{{ message }}</a>
+        <p>Commentaire posté le: {{ date }}</p>
+        <p>1 + 1 = {{ 1 + 1 }} </p>
+    </div>
+    <script>
+        let app = Vue.createApp({
+            // data: représente toutes les variables de notre application vuejs
+            // Le nom 'data' est imposé
+            data: function() {
+                const variables = {
+                    titre: 'Hello World !',
+                    message: "Salut !",
+                    date: new Date().toLocaleDateString()
+                }
+                return variables;
+            }
+        });
+        // On monte l'application sur la div avec l'id app
+        app.mount("#app");
+    </script>
+</body>
+</html>

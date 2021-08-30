@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vuejs</title>
+        <!-- <link rel="stylesheet" href="./css/style.css"> -->
+        <script src="../vue.global.js"></script>
+    </head>
+
+    <body>
+        <h1>Les Composants</h1>
+        <div id="app">
+            <v-header></v-header>
+            <v-card></v-card>
+            <v-body titre="Ipsum"></v-body>
+            <v-body v-bind:titre="monTitre"></v-body>
+        </div>
+        <script type="x-template" id="card">
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore voluptatibus voluptatem neque eum laborum harum tenetur quae dicta delectus consequatur perferendis reprehenderit, culpa animi nobis, tempore perspiciatis et porro amet?
+                Repudiandae exercitationem possimus nobis molestias, quo ea nostrum sunt cumque aliquam molestiae alias, voluptatem quisquam saepe minus in cum officiis tenetur ex! Cumque qui molestias vero dolorum dicta deserunt eum.</p>
+            </div>
+        </script>
+
+        <script type="module">
+            import BodyComponent from './body.js';
+
+            let card = {
+                template: `#card`,
+            }
+            let app = Vue.createApp({
+                data: function() {
+                    return {
+                        monTitre: 'Titre Principal'
+                    };
+                },
+                methods: {
+                   
+                },
+                computed: {
+                   
+                },
+                watch: {
+                   
+                },
+                components: {
+                    'v-card': card,
+                    'v-body': BodyComponent
+                }
+            });
+            // Enregistrer un composant Global
+            app.component('v-header', {
+                template: '<h1>super Header: {{ titre }}</h1>',
+                data: function() {
+                    return {
+                        titre: 'Hello'
+                    }
+                }
+            });
+            let vm = app.mount("#app");
+        </script>
+    </body>
+</html>

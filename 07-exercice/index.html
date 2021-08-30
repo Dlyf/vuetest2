@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./js/employe.js"></script> -->
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="../vue.global.js"></script>
+    <script type="module" src="app.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Liste des utilisateurs</h1>
+        <p v-if="!personnes.length">Aucune personne trouvée</p>
+        <ul v-else>
+            <li v-for="personne of personnes">
+                {{personne.nom}} {{personne.prenom}}, {{personne.email}}
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vuejs</title>
+        <script src="../vue.global.js"></script>
+    </head>
+
+    <body>
+        <h1>Les events</h1>
+        <div id="app">
+            <p>{{ prenom }}</p>
+            <button v-on:click="hello('john')">Clique ici</button>
+            <!-- @: syntaxe raccourcie de v-on: -->
+            <button @click="changerPrenom()">Changer prenom</button>
+            <!-- 
+                Si la fonction ne prend pas de parametre, on peut supprimer les parentheses
+            -->
+            <button @click="changerPrenom">Changer prenom</button>
+
+            <!-- 
+                Attention $ est obligatoire, l'objet $event est créé automatiquement lorsque
+                que l'evenement est declenché
+             -->
+            <input v-on:input="afficher($event)" type="text" placeholder="Entrer le prénom"/>
+            
+            <!-- Par defaut, Vuejs donne l'évènement comme paramètre -->
+            <input  v-on:input="afficher" type="text" placeholder="Entrer le prénom"/>
+
+            <!-- Liaison à double sens -->
+            <input type="text" v-bind:value="prenom" v-on:input="editPrenom($event)">
+            <input type="text" v-model="prenom">
+        </div>
+
+        <script>
+            let app = Vue.createApp({
+                data: function() {
+                    return {
+                        prenom: 'Maude'
+                    };
+                },
+                methods: {
+                    editPrenom(event) {
+                        this.prenom = event.target.value;
+                    },
+                    afficher(evenement) {
+                        console.log(
+                            evenement.target.value
+                        );
+                    },
+                    hello(prenom) {
+                        console.log("Hello " + prenom);
+                    },
+                    changerPrenom() {
+                        this.prenom = "Ella";
+                    }
+                }
+            });
+            let vm = app.mount("#app");
+        </script>
+    </body>
+</html>
